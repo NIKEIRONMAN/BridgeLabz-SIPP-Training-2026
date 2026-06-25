@@ -1,0 +1,5 @@
+abstract class LibraryMember{String memberName,memberId;LibraryMember(String n,String id){memberName=n;memberId=id;}abstract int calculateFine(int d);void print(){System.out.println(memberName+" "+memberId);}}
+class StudentMember extends LibraryMember{StudentMember(String n,String i){super(n,i);}int calculateFine(int d){return d*2;}}
+class FacultyMember extends LibraryMember{FacultyMember(String n,String i){super(n,i);}int calculateFine(int d){return d;}}
+class GuestMember extends LibraryMember{GuestMember(String n,String i){super(n,i);}int calculateFine(int d){return d*5;}}
+public class Main4{public static void main(String[]a){LibraryMember[] m={new StudentMember("A","S1"),new FacultyMember("B","F1"),new GuestMember("C","G1")};String id="F1";for(LibraryMember x:m){x.print();System.out.println(x.calculateFine(4));if(x.memberId.equals(id))System.out.println("Found "+x.memberName);}}}

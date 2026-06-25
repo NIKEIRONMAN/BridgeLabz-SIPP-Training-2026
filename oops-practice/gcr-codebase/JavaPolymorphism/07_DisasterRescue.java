@@ -1,0 +1,5 @@
+abstract class RescueTeam{String teamId,location;RescueTeam(String t,String l){teamId=t;location=l;}abstract void performDuty();}
+class MedicalTeam extends RescueTeam{MedicalTeam(String t,String l){super(t,l);}void performDuty(){System.out.println("Medical at "+location);}}
+class FireRescueTeam extends RescueTeam{FireRescueTeam(String t,String l){super(t,l);}void performDuty(){System.out.println("Fire rescue at "+location);}}
+class FoodSupplyTeam extends RescueTeam{FoodSupplyTeam(String t,String l){super(t,l);}void performDuty(){System.out.println("Food supply at "+location);}}
+public class Main7{public static void main(String[]a){RescueTeam[] r={new MedicalTeam("1","Delhi"),new FireRescueTeam("2","Agra"),new FoodSupplyTeam("3","Delhi"),new MedicalTeam("4","Agra")};int m=0,f=0,fs=0;for(RescueTeam x:r){x.performDuty();if(x.location.equals("Delhi"))System.out.println("Found "+x.teamId);if(x.teamId.startsWith("1"))System.out.println("Prefix "+x.teamId);if(x instanceof MedicalTeam)m++;else if(x instanceof FireRescueTeam)f++;else fs++;}System.out.println("Medical="+m+" Fire="+f+" Food="+fs);System.out.println(m>=f&&m>=fs?"Medical":f>=fs?"Fire":"Food");}}

@@ -1,0 +1,5 @@
+abstract class Subscription{String subscriberName,subscriptionId;Subscription(String n,String i){subscriberName=n;subscriptionId=i;}abstract int calculateMonthlyCharge();}
+class BasicPlan extends Subscription{BasicPlan(String n,String i){super(n,i);}int calculateMonthlyCharge(){return 199;}}
+class PremiumPlan extends Subscription{PremiumPlan(String n,String i){super(n,i);}int calculateMonthlyCharge(){return 499;}}
+class FamilyPlan extends Subscription{FamilyPlan(String n,String i){super(n,i);}int calculateMonthlyCharge(){return 799;}}
+public class Main6{public static void main(String[]a){Subscription[] s={new BasicPlan("Alice","1"),new PremiumPlan("Bob","2"),new FamilyPlan("Alex","3")};int rev=0,max=-1;Subscription best=null;for(Subscription x:s){rev+=x.calculateMonthlyCharge();if(x.calculateMonthlyCharge()>max){max=x.calculateMonthlyCharge();best=x;}if(x.subscriberName.startsWith("A"))System.out.println(x.subscriberName);if(x.subscriptionId.equals("2"))System.out.println("Found "+x.subscriberName);}System.out.println(rev);System.out.println(best.subscriberName);}}
